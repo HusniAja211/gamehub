@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+   
+    <link rel="stylesheet" href="style.css">
+    <script defer src="app.js"></script>
+</head>
+<body>
+ <!-- Tombol Back -->
+ <button onclick="history.back()" class="btn btn-secondary btn-lg mt-3">Back</button>
+</div>
+<style>.btn-secondary {
+    background-color: #6c757d !important;
+    color: white !important;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268 !important;
+    transform: scale(1.05);
+}
+</style>
+    <div class="container">
+        <h1>Memory Game</h1>
+        <h3>Score: <span id="result">0</span></h3>
+
+        <div class="grid"></div>
+ <!-- Tombol restart-->
+ <button id="restartBtn">Restart Game</button>
+
+
+        
+    </div>
+
+
+</body>
+</html>

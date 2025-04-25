@@ -1,0 +1,50 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: rgb(247, 37, 37);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.grid img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    border: 3px solid rgb(15, 15, 15); /* Tambahkan border */
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.grid img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-color: yellow; /* Border berubah warna saat hover */
+}
+
+#restartBtn {
+    padding: 20px;
+    margin-top: 5%;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#restartBtn:hover {
+    background-color: darkred;
+}
