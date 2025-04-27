@@ -17,7 +17,7 @@ $start = ($page - 1) * $perPage;
 $displayImages = array_slice($images, $start, $perPage);
 ?>
 
-<main class="p-6 flex-1 bg-gray-200 min-h-screen relative pb-20">
+<main class="p-6 flex-1 bg-gray-200 flex flex-col justify-start">
     <h1 class="text-center text-xl font-bold mb-6">Galery</h1>
 
     <!-- Grid x 5 column -->
@@ -35,31 +35,12 @@ $displayImages = array_slice($images, $start, $perPage);
         </div>
     <?php endforeach; ?>
 </div>
-
-    <!-- Pagination di posisi absolute di bawah -->
-    <div class="absolute bottom-0 left-0 right-0 flex justify-center py-3 bg-gray-200 shadow-lg">
-        <div class="flex space-x-2">
-            <?php if ($page > 1) : ?>
-                <a href="?page=<?= $page - 1 ?>" class="px-4 py-2 bg-blue-500 text-white rounded-md">Sebelumnya</a>
-            <?php endif; ?>
-            
-            <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                <a href="?page=<?= $i ?>" class="px-4 py-2 <?= $i == $page ? 'bg-blue-700 text-white' : 'bg-gray-300 text-black' ?> rounded-md">
-                    <?= $i ?>
-                </a>
-            <?php endfor; ?>
-            
-            <?php if ($page < $totalPages) : ?>
-                <a href="?page=<?= $page + 1 ?>" class="px-4 py-2 bg-blue-500 text-white rounded-md">Berikutnya</a>
-            <?php endif; ?>
-        </div>
-    </div>
-
-    <!-- Menambahkan Icon Plus untuk navigasi ke fitur create, di bawah konten -->
-   <div class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-gray-200">
-    <a href="insertGalery.php" class="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600">
-        <i class="fas fa-plus text-xl"></i>
-    </a>
+    
+    <div class="flex justify-between items-center mt-auto pt-6">
+        <!-- Tombol Tambah (Sisi Kiri) -->
+        <a href="insertGalery.php" class="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600">
+            <i class="fas fa-plus text-xl"></i>
+        </a>
     </div>
 
 </main>

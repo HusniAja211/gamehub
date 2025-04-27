@@ -2,45 +2,46 @@
 
 // function/func.php
 
+// Fix getGame() function
 function getGame($conn, $limit, $offset) {
-    // Query dengan JOIN untuk mengambil data dari tabel game dan tim_developer
+    // Query with JOIN to get data from the game and developer_team tables
     $query = "SELECT game.id_game, game.nama_game, game.gambar_game, game.tautan, game.deskripsi, tim_developer.nama_anggota
               FROM game
               JOIN tim_developer ON game.fid_timDeveloper = tim_developer.id_tim
               LIMIT ? OFFSET ?";
 
-    // Persiapkan statement
+    // Prepare the statement
     $stmt = $conn->prepare($query);
     if (!$stmt) {
         die("Query failed: " . $conn->error);
     }
 
-    // Bind parameter LIMIT dan OFFSET
+    // Bind parameters for LIMIT and OFFSET
     $stmt->bind_param('ii', $limit, $offset);
 
-    // Eksekusi query
+    // Execute the query
     $stmt->execute();
 
-    // Bind hasil query
+    // Bind results to variables
     $stmt->bind_result($id_game, $nama_game, $gambar_game, $tautan, $deskripsi, $nama_anggota);
 
-    // Tentukan path untuk gambar
+    // Path for images
     $path = "../../public/img/game/";
     $games = [];
 
-    // Ambil hasil query dan masukkan ke dalam array
+    // Fetch results and add to the array
     while ($stmt->fetch()) {
         $games[] = [
             'id_game' => $id_game,
             'nama_game' => $nama_game,
-            'gambar_game' => $path . $gambar_game, // Menambahkan path ke gambar
+            'gambar_game' => $path . $gambar_game, // Add path to image
             'tautan' => $tautan,
             'deskripsi' => $deskripsi,
             'nama_anggota' => $nama_anggota
         ];
     }
 
-    // Tutup statement
+    // Close the statement
     $stmt->close();
 
     return $games;

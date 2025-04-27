@@ -5,7 +5,7 @@ include __DIR__ . "/layout/navbar.php";
 require_once "../function/func.php";
 
 // Tentukan jumlah game per halaman
-$gamesPerPage = 9;
+$gamesPerPage = 9; // 9 card per halaman
 
 // Ambil jumlah total game
 $totalGames = getTotalGames($conn);
@@ -68,50 +68,7 @@ $hasilGame = getGame($conn, $gamesPerPage, $offset);
         <a href="insertGame.php" class="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600">
             <i class="fas fa-plus text-xl"></i>
         </a>
-
-        <!-- Pagination -->
-        <div class="flex-1 flex justify-center">
-            <nav>
-                <ul class="flex space-x-4">
-                    <!-- Previous Button -->
-                    <?php if ($page > 1): ?>
-                        <li>
-                            <a href="?page=<?= $page - 1 ?>" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                                Prev
-                            </a>
-                        </li>
-                    <?php else: ?>
-                        <li>
-                            <span class="px-4 py-2 bg-gray-300 text-gray-500 rounded">Prev</span>
-                        </li>
-                    <?php endif; ?>
-
-                    <!-- Page Numbers -->
-                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                        <li>
-                            <a href="?page=<?= $i ?>" class="px-4 py-2 <?= ($i == $page) ? 'bg-blue-500 text-white' : 'bg-white text-blue-500' ?> rounded hover:bg-blue-600 hover:text-white">
-                                <?= $i ?>
-                            </a>
-                        </li>
-                    <?php endfor; ?>
-
-                    <!-- Next Button -->
-                    <?php if ($page < $totalPages): ?>
-                        <li>
-                            <a href="?page=<?= $page + 1 ?>" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                                Next
-                            </a>
-                        </li>
-                    <?php else: ?>
-                        <li>
-                            <span class="px-4 py-2 bg-gray-300 text-gray-500 rounded">Next</span>
-                        </li>
-                    <?php endif; ?>
-                </ul>
-            </nav>
-        </div>
     </div>
 </main>
-
 
 <?php include __DIR__ . "/layout/footer.php"; ?>

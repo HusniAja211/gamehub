@@ -15,10 +15,11 @@ if ($result) {
 }
 
 if (isset($_POST['kirim'])) {
+  $path_game = "game/";
   $nama = $_POST['nama_game'];
   $developer = $_POST['developer'];
   $deskripsi = $_POST['deskripsi_game'];
-  $tautan = $_POST['tautan_game'];
+  $tautan = $path_game . $_POST['tautan_game'];
   
   // Panggil fungsi insertGambar dan dapatkan ID gambar
   $gambar = insertGambarGame($conn, $nama);
@@ -58,7 +59,7 @@ if (isset($_POST['kirim'])) {
           </select>
 
           <label class="block font-medium text-gray-800 mt-5 mb-2">Gambar Game</label>
-          <input type="file" name="gambar_game" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-500 shadow-md">
+          <input type="file" name="gambar_game" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-500 shadow-md" required>
 
           <label class="block font-medium text-gray-800 mt-5 mb-2">Tautan</label>
           <input type="text" name="tautan_game" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-gray-500 shadow-md" autocomplete="off" required>    

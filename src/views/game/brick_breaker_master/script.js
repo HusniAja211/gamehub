@@ -20,9 +20,11 @@ var brickWidth = 85;
 var brickHeight = 25;
 var brickPadding = 10;
 var brickOffSetTop = 50;
-var brickOffSetLeft = 50;
 var score = 0;
 var lives = 3;
+
+var totalBrickWidth = brickColumnCount * brickWidth + (brickColumnCount - 1) * brickPadding;
+var brickOffSetLeft = (canvas.width - totalBrickWidth) / 2;
 
 var bricks = [];
 for (let c = 0; c < brickColumnCount; c++) {

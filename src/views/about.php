@@ -64,8 +64,9 @@ $devs = getDev($conn);
        
     </section>
 
-    <!-- Tombol Tambah -->
-    <div class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-gray-200">
+     <!-- Pagination & Tombol Tambah -->
+     <div class="flex justify-between items-center mt-auto pt-6">
+        <!-- Tombol Tambah (Sisi Kiri) -->
         <a href="insertDev.php" class="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600">
             <i class="fas fa-plus text-xl"></i>
         </a>

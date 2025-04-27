@@ -41,10 +41,10 @@
             <input type="text" name="nama_developer" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-400 focus:outline-none shadow-md" autocomplete="off" required>
 
             <label class="block font-medium text-gray-800 mt-5 mb-2">Instagram</label>
-            <input type="text" name="instagram" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-pink-400 shadow-md" autocomplete="off">
+            <input type="text" name="instagram" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-pink-400 shadow-md" autocomplete="off" required>
 
             <label class="block font-medium text-gray-800 mt-5 mb-2">LinkedIn</label>
-            <input type="text" name="linkedin" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-500 shadow-md" autocomplete="off">
+            <input type="text" name="linkedin" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-500 shadow-md" autocomplete="off" required>
 
             <label class="block font-medium text-gray-800 mt-5 mb-2">GitHub</label>
             <input type="text" name="github" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-gray-500 shadow-md" autocomplete="off">
@@ -53,7 +53,7 @@
             <input type="text" name="deskripsi" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-gray-500 shadow-md" autocomplete="off" required>
 
             <label class="block font-medium text-gray-800 mt-5 mb-2">Upload Image</label>
-            <input type="file" name="gambar_developer" accept="image/*" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-gray-500 shadow-md">
+            <input type="file" name="gambar_developer" accept="image/*" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-gray-500 shadow-md" required>
             </div>
         </div>
         <div class="mt-10 text-center">
