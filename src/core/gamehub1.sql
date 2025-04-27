@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 11, 2025 at 04:34 AM
+-- Generation Time: Apr 27, 2025 at 03:55 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -42,7 +42,17 @@ CREATE TABLE `developer` (
 --
 
 INSERT INTO `developer` (`id_developer`, `nama_developer`, `instagram`, `linkedin`, `github`, `deskripsi`, `gambar_developer`) VALUES
-(3, 'Husni Mubarak', 'https://www.instagram.com/husniaja211/', 'https://www.linkedin.com/in/husni-mubarak-305428317/', 'https://github.com/HusniAja211', 'Ketua dari tim ini. Developer yang suka backend (gak ahli T_T), tapi ogah frontend :D', 'husni_mubarak.jpg');
+(3, 'Husni Mubarak', 'https://www.instagram.com/husniaja211/', 'https://www.instagram.com/husniaja211/', 'https://github.com/HusniAja211', 'Project Manager, Game Developer, Back-End Developer. Developer yang suka backend (gak ahli T_T), tapi ogah frontend :D', 'husni_mubarak.jpg'),
+(4, 'Cornel Firstio', 'https://www.instagram.com/corneltio_cinematographer?igsh=b3M0OXNkbW9ydXcw', '', '', 'Game Developer, Photographer', 'cornel_firstio.jpg'),
+(5, 'Felicia Giona Budiman', 'https://www.instagram.com/felicia_giona_b/', NULL, NULL, 'Game Developer, Web Designer', 'felicia_giona_budiman.jpg'),
+(6, 'Muhammad Fachri Al Farizky', 'https://www.instagram.com/fachri0507?igsh=MTg0Nzd2YWtlN2Vsbw==', NULL, NULL, 'Game Developer', 'muhammad_fachri_al_farizky.jpg'),
+(7, 'Nabila Hajizah', 'https://www.instagram.com/xbilahjzh_?igsh=MXIxNnR2YmVic3V3bw==', NULL, NULL, 'Game Developer, Web Designer', 'nabila_hajizah.jpg'),
+(8, 'Naufal Raihan Ramadhan', 'https://www.instagram.com/nvra_sh?igsh=MWZ5cjJycWQ0OWpwZQ==', NULL, NULL, 'Game Developer', 'naufal_raihan_ramadhan.jpg'),
+(9, 'Nur Said Syaban', 'https://www.instagram.com/nursaidsyaban?igsh=MWFvNms1ODA5cXRqdw==', NULL, NULL, 'Game Developer', 'nur_said_syaban.jpg'),
+(10, 'Queenrine Messia Shireen Meray', 'https://www.instagram.com/shrn.mry?igsh=MXBuMmd5YW92aDFiYg==', '', '', 'Game Developer, Web Designer', 'queenrine_messia_shireen_meray.jpg'),
+(11, 'Rachel Fayza Idris', 'https://www.instagram.com/rechlzzza?igsh=MXZ6YnhrbWV3a2RsaQ==', NULL, NULL, 'Game Developer, Web Designer', 'rachel_fayza_idris.jpg'),
+(12, 'Romulus Pandapotan', 'https://www.instagram.com/romulus.pandapotan?igsh=MTg0Nzd2YWtlN2Vsbw==', NULL, NULL, 'Game Developer', 'romulus_pandapotan.jpg'),
+(13, 'Artaresya Faragista Ramadhani', 'https://www.instagram.com/chocoloveyou_?igsh=MWF4ZHhweHFoaWU4dw==', '', '', 'Game Developer, Web Designer', 'artaresya_faragista_ramadhani.png');
 
 -- --------------------------------------------------------
 
@@ -60,7 +70,23 @@ CREATE TABLE `galery` (
 --
 
 INSERT INTO `galery` (`id_galery`, `nama_galery`) VALUES
-(3, 'aset_01.png');
+(1, 'aset_01.png'),
+(2, 'aset_02.png'),
+(3, 'aset_03.png'),
+(4, 'aset_04.png'),
+(5, 'aset_05.png'),
+(6, 'aset_06.png'),
+(7, 'aset_07.png'),
+(8, 'aset_08.png'),
+(9, 'aset_09.png'),
+(10, 'aset_10.png'),
+(11, 'aset_11.png'),
+(12, 'aset_12.png'),
+(13, 'aset_13.png'),
+(14, 'aset_14.png'),
+(15, 'aset_15.png'),
+(16, 'aset_16.png'),
+(17, 'aset_17.png');
 
 -- --------------------------------------------------------
 
@@ -82,7 +108,14 @@ CREATE TABLE `game` (
 --
 
 INSERT INTO `game` (`id_game`, `nama_game`, `fid_timDeveloper`, `gambar_game`, `tautan`, `deskripsi`) VALUES
-(1, 'Quizz', 5, 'quizz.png', 'game/quiz/', 'Game seru! Menyediakan soal dari mata pelajaran normatif dan produktif RPL !');
+(1, 'Quizz', 5, 'quizz.png', 'game/quiz/', 'Game seru! Menyediakan soal dari mata pelajaran normatif dan produktif RPL !'),
+(2, 'Brick Breaker Master', 8, 'brick_breaker_master.png', 'game/brick_breaker_master', 'Game Menghancurkan block'),
+(3, 'Chess Master', 2, 'chess_master.png', 'game/chess_master/catur.html', 'Game Catur'),
+(4, 'Car Racing', 6, 'car_racing.png', 'game/game_balap/index.html', 'RACING!!'),
+(5, 'Gunting Batu Kertas RPG', 1, 'gunting_batu_kertas_rpg.png', 'game/gunting_batu_kertas_rpg/index.php', 'Game Gunting Batu Kertas dengan Sistem Level'),
+(6, 'Memory Game', 11, 'memory_game.png', 'game/memory_game_master/index.php', 'Game pengasah ingatan!'),
+(7, 'Semangka Anomali', 7, 'semangka_anomali.png', 'game/semangka_anomali/index.html', 'Anomali Banget!'),
+(8, 'Doom Bubble', 3, 'doom_bubble.png', 'game/doom_bubble/index.php', 'Labirin');
 
 -- --------------------------------------------------------
 
@@ -403,19 +436,19 @@ ALTER TABLE `tim_developer`
 -- AUTO_INCREMENT for table `developer`
 --
 ALTER TABLE `developer`
-  MODIFY `id_developer` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_developer` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `galery`
 --
 ALTER TABLE `galery`
-  MODIFY `id_galery` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_galery` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_game` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_game` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `jawaban_asal`
