@@ -18,7 +18,7 @@ $displayImages = array_slice($images, $start, $perPage);
 ?>
 
 <main class="p-6 flex-1 bg-gray-200 flex flex-col justify-start">
-    <h1 class="text-center text-xl font-bold mb-6">Galery</h1>
+    <h1 class="text-center text-xl font-bold mb-6">Laman Galeri</h1>
 
     <!-- Grid x 5 column -->
    <div class="grid grid-cols-5 gap-4">    

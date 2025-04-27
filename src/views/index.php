@@ -26,7 +26,7 @@ $hasilGame = getGame($conn, $gamesPerPage, $offset);
 ?>
 
 <main class="p-6 flex-1 bg-gray-200 flex flex-col justify-between">
-    <h1 class="text-center text-xl font-bold mb-6">HomePage</h1>
+    <h1 class="text-center text-xl font-bold mb-6">Laman Gim</h1>
 
     <!-- Games Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-12">

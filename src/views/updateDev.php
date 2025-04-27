@@ -60,19 +60,19 @@
             <div class="grid grid-cols-1 gap-8">
                 <div class="flex flex-col items-center">
                     <label class="block font-medium text-gray-800 mb-2">Nama Developer</label>
-                    <input type="text" name="nama_developer" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-400 focus:outline-none shadow-md" autocomplete="off" value="<?php echo htmlspecialchars($developer['nama_developer']); ?>" required>
+                    <input type="text" name="nama_developer" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-400 focus:outline-none shadow-md" autocomplete="off" value="<?= htmlspecialchars($developer['nama_developer']); ?>" required>
 
                     <label class="block font-medium text-gray-800 mt-5 mb-2">Instagram</label>
-                    <input type="text" name="instagram" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-pink-400 shadow-md" autocomplete="off" value="<?php echo htmlspecialchars($developer['instagram']); ?>">
+                    <input type="text" name="instagram" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-pink-400 shadow-md" autocomplete="off" value="<?= isset($developer['instagram']) ? htmlspecialchars($developer['instagram']) : '' ?>">
 
                     <label class="block font-medium text-gray-800 mt-5 mb-2">LinkedIn</label>
-                    <input type="text" name="linkedin" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-500 shadow-md" autocomplete="off" value="<?php echo htmlspecialchars($developer['linkedin']); ?>">
+                    <input type="text" name="linkedin" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-500 shadow-md" autocomplete="off" value="<?= isset($developer['linkedin']) ? htmlspecialchars($developer['instagram']) : '' ; ?>">
 
                     <label class="block font-medium text-gray-800 mt-5 mb-2">GitHub</label>
-                    <input type="text" name="github" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-gray-500 shadow-md" autocomplete="off" value="<?php echo htmlspecialchars($developer['github']); ?>">
+                    <input type="text" name="github" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-gray-500 shadow-md" autocomplete="off" value="<?= isset($developer['github']) ? htmlspecialchars($developer['github']) : '' ; ?>">
 
                     <label class="block font-medium text-gray-800 mt-5 mb-2">Deskripsi</label>
-                    <input type="text" name="deskripsi" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-gray-500 shadow-md" autocomplete="off" value="<?php echo htmlspecialchars($developer['deskripsi']); ?>" required>
+                    <input type="text" name="deskripsi" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-gray-500 shadow-md" autocomplete="off" value="<?= htmlspecialchars($developer['deskripsi']); ?>" required>
 
                     <label class="block font-medium text-gray-800 mt-5 mb-2">Upload Image</label>
                     <input type="file" name="gambar_developer" accept="image/*" class="w-3/4 p-4 border border-gray-300 rounded-2xl focus:ring-4 focus:ring-gray-500 shadow-md">

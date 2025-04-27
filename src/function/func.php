@@ -1,7 +1,5 @@
 <?php
 
-// function/func.php
-
 // Fix getGame() function
 function getGame($conn, $limit, $offset) {
     // Query with JOIN to get data from the game and developer_team tables
@@ -21,6 +19,9 @@ function getGame($conn, $limit, $offset) {
 
     // Execute the query
     $stmt->execute();
+
+    $id_game = $nama_game = $gambar_game = $tautan = $deskripsi = $nama_anggota = null;
+
 
     // Bind results to variables
     $stmt->bind_result($id_game, $nama_game, $gambar_game, $tautan, $deskripsi, $nama_anggota);
