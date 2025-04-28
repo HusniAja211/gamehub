@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 27, 2025 at 03:55 PM
+-- Generation Time: Apr 28, 2025 at 04:12 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -110,7 +110,7 @@ CREATE TABLE `game` (
 INSERT INTO `game` (`id_game`, `nama_game`, `fid_timDeveloper`, `gambar_game`, `tautan`, `deskripsi`) VALUES
 (1, 'Quizz', 5, 'quizz.png', 'game/quiz/', 'Game seru! Menyediakan soal dari mata pelajaran normatif dan produktif RPL !'),
 (2, 'Brick Breaker Master', 8, 'brick_breaker_master.png', 'game/brick_breaker_master', 'Game Menghancurkan block'),
-(3, 'Chess Master', 2, 'chess_master.png', 'game/chess_master/catur.html', 'Game Catur'),
+(3, 'Chess Master', 2, 'chess_master.png', 'game/chess_master/chess.html', 'Game Catur'),
 (4, 'Car Racing', 6, 'car_racing.png', 'game/game_balap/index.html', 'RACING!!'),
 (5, 'Gunting Batu Kertas RPG', 1, 'gunting_batu_kertas_rpg.png', 'game/gunting_batu_kertas_rpg/index.php', 'Game Gunting Batu Kertas dengan Sistem Level'),
 (6, 'Memory Game', 11, 'memory_game.png', 'game/memory_game_master/index.php', 'Game pengasah ingatan!'),

@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 28, 2025 at 10:01 AM
+-- Generation Time: Apr 28, 2025 at 04:12 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -29,12 +30,12 @@ SET time_zone = "+00:00";
 CREATE TABLE `developer` (
   `id_developer` int NOT NULL,
   `nama_developer` varchar(100) NOT NULL,
-  `instagram` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `instagram` varchar(100) DEFAULT NULL,
   `linkedin` varchar(100) DEFAULT NULL,
-  `github` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `github` varchar(100) DEFAULT NULL,
   `deskripsi` varchar(200) NOT NULL,
   `gambar_developer` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `developer`
@@ -61,8 +62,8 @@ INSERT INTO `developer` (`id_developer`, `nama_developer`, `instagram`, `linkedi
 
 CREATE TABLE `galery` (
   `id_galery` int NOT NULL,
-  `nama_galery` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nama_galery` varchar(255) NOT NULL
+);
 
 --
 -- Dumping data for table `galery`
@@ -97,10 +98,10 @@ CREATE TABLE `game` (
   `id_game` int NOT NULL,
   `nama_game` varchar(100) DEFAULT NULL,
   `fid_timDeveloper` int NOT NULL,
-  `gambar_game` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `gambar_game` varchar(100) NOT NULL,
   `tautan` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `game`
@@ -109,7 +110,7 @@ CREATE TABLE `game` (
 INSERT INTO `game` (`id_game`, `nama_game`, `fid_timDeveloper`, `gambar_game`, `tautan`, `deskripsi`) VALUES
 (1, 'Quizz', 5, 'quizz.png', 'game/quiz/', 'Game seru! Menyediakan soal dari mata pelajaran normatif dan produktif RPL !'),
 (2, 'Brick Breaker Master', 8, 'brick_breaker_master.png', 'game/brick_breaker_master', 'Game Menghancurkan block'),
-(3, 'Chess Master', 2, 'chess_master.png', 'game/chess_master/catur.html', 'Game Catur'),
+(3, 'Chess Master', 2, 'chess_master.png', 'game/chess_master/chess.html', 'Game Catur'),
 (4, 'Car Racing', 6, 'car_racing.png', 'game/game_balap/index.html', 'RACING!!'),
 (5, 'Gunting Batu Kertas RPG', 1, 'gunting_batu_kertas_rpg.png', 'game/gunting_batu_kertas_rpg/index.php', 'Game Gunting Batu Kertas dengan Sistem Level'),
 (6, 'Memory Game', 11, 'memory_game.png', 'game/memory_game_master/index.php', 'Game pengasah ingatan!'),
@@ -124,9 +125,9 @@ INSERT INTO `game` (`id_game`, `nama_game`, `fid_timDeveloper`, `gambar_game`, `
 
 CREATE TABLE `jawaban_asal` (
   `id` int NOT NULL,
-  `jawaban_asal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `jawaban_asal` varchar(255) NOT NULL,
   `id_kategori` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Dumping data for table `jawaban_asal`
@@ -203,7 +204,7 @@ INSERT INTO `jawaban_asal` (`id`, `jawaban_asal`, `id_kategori`) VALUES
 (76, 'Slow', 9),
 (77, ' requesting', 9),
 (78, 'will have', 9),
-(79, 'He doesn\'t like pizza.', 9),
+(79, 'He doesn\t like pizza.', 9),
 (80, 'I went to the store and I bought some fruit', 9),
 (81, 'will go', 9),
 (82, 'she finished her homework', 9);
@@ -216,8 +217,8 @@ INSERT INTO `jawaban_asal` (`id`, `jawaban_asal`, `id_kategori`) VALUES
 
 CREATE TABLE `kategori` (
   `id` int NOT NULL,
-  `kategori` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `kategori` varchar(50) NOT NULL
+);
 
 --
 -- Dumping data for table `kategori`
@@ -243,10 +244,10 @@ INSERT INTO `kategori` (`id`, `kategori`) VALUES
 CREATE TABLE `soal` (
   `id` int NOT NULL,
   `id_kategori` int NOT NULL,
-  `soal` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `jawaban` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `petunjuk` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `soal` varchar(255) NOT NULL,
+  `jawaban` varchar(255) NOT NULL,
+  `petunjuk` varchar(255) NOT NULL
+);
 
 --
 -- Dumping data for table `soal`
@@ -314,7 +315,7 @@ INSERT INTO `soal` (`id`, `id_kategori`, `soal`, `jawaban`, `petunjuk`) VALUES
 (59, 9, 'Which sentence uses the correct modal verb?\r\n', 'You should study for the exam.\r\n', 'Check the grammar of the modal verb and the verb that follows.\r\n'),
 (60, 9, 'Choose the correct sentence:\r\n', 'She enjoys playing piano.\r\n', 'Some verbs are followed by gerunds (-ing form).\r\n'),
 (61, 9, 'Which question is correct?\r\n', 'Where does she live?\r\n', 'Pay attention to subject-verb agreement and tense.'),
-(62, 7, 'Apa fungsi utama Al-Qur\'an bagi umat Islam?', ' Petunjuk hidup bagi manusia', 'Al-Qur\'an disebut sebagai \"Hudan lil Muttaqin\" yang berarti petunjuk bagi orang-orang bertakwa.  \r\n'),
+(62, 7, 'Apa fungsi utama Al-Qur\an bagi umat Islam?', ' Petunjuk hidup bagi manusia', 'Al-Qur\an disebut sebagai \"Hudan lil Muttaqin\" yang berarti petunjuk bagi orang-orang bertakwa.  \r\n'),
 (63, 7, 'Apa arti sifat wajib Allah Al-Hakim', 'Maha Bijaksana', ' Kata \"Hakim\" dalam bahasa Arab berkaitan dengan hikmah dan kebijaksanaan. '),
 (64, 7, 'Apa hukum shalat lima waktu bagi seorang Muslim', 'Wajib ain', 'Wajib ain adalah kewajiban yang harus dilakukan setiap individu. '),
 (65, 7, 'Apa contoh perilaku amanah dalam kehidupan sehari-hari?', 'Menyampaikan titipan kepada orang yang dituju', 'Amanah berarti menjaga kepercayaan atau tanggung jawab yang diberikan'),
@@ -353,8 +354,8 @@ INSERT INTO `soal` (`id`, `id_kategori`, `soal`, `jawaban`, `petunjuk`) VALUES
 
 CREATE TABLE `tim_developer` (
   `id_tim` int NOT NULL,
-  `nama_anggota` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nama_anggota` varchar(255) NOT NULL
+);
 
 --
 -- Dumping data for table `tim_developer`
@@ -495,7 +496,3 @@ ALTER TABLE `jawaban_asal`
 ALTER TABLE `soal`
   ADD CONSTRAINT `soal_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
