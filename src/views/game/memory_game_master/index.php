@@ -21,43 +21,44 @@ $cardArrayJSON = json_encode($cardArray);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../public/css/output.css">
+    <style>
+        .custom-button {
+            padding: 10px 25px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+        .btn-success.custom-button:hover {
+            background-color: #218838; /* warna hover untuk tombol Play */
+            transform: scale(1.05);
+        }
+
+        .btn-secondary.custom-button:hover {
+            background-color: #545b62; /* warna hover untuk tombol Back */
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-100">
 
-<div class="container text-center mt-5">
-    <h1 class="fw-bold text-primary">Memory Card Game</h1>
-    <p class="lead">Cocokkan dua kartu yang sama untuk menang!</p>
+<div class="container mx-auto text-center mt-16">
+    <h1 class="text-4xl font-bold text-blue-600">Memory Game</h1>
+    <p class="text-lg mt-4">Match two cards until three of the same to win!</p>
 
     <!-- Tombol Play -->
-    <a href="main.html" class="btn btn-success btn-lg mt-3">Play</a>
-</div>
-<!-- Tombol Back -->
-<button onclick="history.back()" class="btn btn-secondary btn-lg mt-3">Back</button>
-</div>
-<style>.btn-secondary {
-    background-color: #6c757d !important;
-    color: white !important;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
+    <a href="main.html" class="inline-block mt-8 px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all duration-300 transform hover:scale-105">Play</a>
 
-.btn-secondary:hover {
-    background-color: #5a6268 !important;
-    transform: scale(1.05);
-}
-</style>
+    <!-- Tombol Back -->
+    <button class="mt-4 inline-block px-8 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-all duration-300 transform hover:scale-105">
+        <a href="../../index.php" class="text-white">Back</a>
+    </button>
+</div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
