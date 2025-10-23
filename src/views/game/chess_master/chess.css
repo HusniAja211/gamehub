@@ -239,3 +239,8 @@ label:hover {
   padding: 30px 60px;
   font-size: 25px;
 }
+
+.highlight {
+    outline: 3px solid red;
+}
+

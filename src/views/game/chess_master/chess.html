@@ -304,6 +304,8 @@
     <script type="text/javascript" src="SimulationGame.js"></script>
     <script type="text/javascript" src="ai.js"></script>
     <script type="text/javascript" src="Board.js"></script>
+    <script src="/gamehub/src/function/controller.js"></script>
+    <script src="controllerNavigation.js"></script>
 
     <script type="text/javascript">
       const boardAnimate = () => {
@@ -340,6 +342,24 @@
       };
 
       changeColorSelect();
+    </script>
+
+    <script>
+      // Ketika user klik "Start Game"
+      function startGame() {
+        currentScene = "board";
+        document.getElementById("startscene").classList.remove("show");
+        document.getElementById("boardscene").classList.add("show");
+        console.log("Switched to board scene");
+      }
+
+      // Ketika user balik ke menu
+      function backToMenu() {
+        currentScene = "start";
+        document.getElementById("startscene").classList.add("show");
+        document.getElementById("boardscene").classList.remove("show");
+      }
+
     </script>
   </body>
 </html>

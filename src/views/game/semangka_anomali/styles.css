@@ -1,0 +1,237 @@
+ @import url(https://fonts.bunny.net/css?family=azeret-mono:400,700,900);
+
+      .nav-button {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background-color: #db34db;
+        color: rgb(246, 129, 250);
+        border: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      :root {
+        --col-bg: #f49dff;
+        --col-bg-light: #f380de;
+        --col-bg-lighter: #f39ce4;
+        --col-primary: #bb0f96;
+        --col-primary-dark: #420825;
+        --col-primary-light: #b700ff;
+        --col-shadow: rgba(0, 0, 0, 0.25);
+        --col-white: #f599f0;
+      }
+
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        line-height: 1;
+      }
+
+      body {
+        background-color: var(--col-bg);
+        font-family: "Azeret Mono", sans-serif;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 640px;
+        margin: 0 auto;
+        height: 100vh;
+      }
+
+      #game-canvas {
+        position: relative;
+      }
+
+      #game-ui {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        user-select: none;
+        font-weight: 700;
+        display: none;
+        transform-origin: top left;
+      }
+
+      #game-score {
+        position: absolute;
+        width: 100%;
+        border-bottom: 2px dotted #333;
+        font-size: 84px;
+        font-weight: 900;
+        padding-left: 16px;
+        color: var(--col-bg-lighter);
+        text-shadow: 3px 3px 0 var(--col-primary),
+          -3px -3px 0 var(--col-primary), -3px 3px 0 var(--col-primary),
+          3px -3px 0 var(--col-primary);
+      }
+
+      #game-end-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        background-color: var(--col-shadow);
+      }
+
+      #game-end {
+        text-align: center;
+        padding: 32px 48px;
+        background-color: var(--col-bg-lighter);
+        border: 5px solid var(--col-primary);
+        box-shadow: 0 4px 32px var(--col-shadow);
+        border-radius: 32px;
+        margin: 0 auto;
+        pointer-events: initial;
+        user-select: initial;
+      }
+
+      #game-end-title {
+        font-weight: 700;
+        font-size: 48px;
+        color: var(--col-primary-dark);
+      }
+
+      #game-end-link {
+        display: inline-block;
+        color: var(--col-white);
+        font-size: 24px;
+        text-decoration: none;
+        background-color: var(--col-primary-light);
+        margin-top: 16px;
+        padding: 16px;
+        border-radius: 16px;
+        box-shadow: 4px 4px 0 var(--col-shadow);
+      }
+
+      #game-end-link:hover {
+        background-color: var(--col-primary);
+        box-shadow: 6px 6px 0 var(--col-shadow);
+      }
+
+      #game-status {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 48px;
+        background-color: var(--col-bg-lighter);
+        display: flex;
+      }
+
+      .game-status-item {
+        display: flex;
+        line-height: 1;
+        align-items: center;
+        margin-right: 32px;
+      }
+
+      .game-status-label {
+        color: #666;
+        font-size: 16px;
+        margin-left: 24px;
+        margin-right: 8px;
+      }
+
+      #game-highscore-value {
+        color: #333;
+        font-weight: 700;
+        font-size: 24px;
+      }
+
+      #game-next-fruit {
+        width: 24px;
+        height: 24px;
+      }
+
+      /* ---------- Gamepad guide panel ---------- */
+      #gamepad-guide {
+        position: fixed;
+        right: 20px;
+        top: 80px;
+        width: 240px;
+        background: rgba(255,255,255,0.92);
+        color: #2b2b2b;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        padding: 14px;
+        font-weight: 700;
+        font-family: inherit;
+        z-index: 9999;
+        pointer-events: none; /* non-interactive */
+      }
+
+      #gamepad-guide h3 {
+        font-size: 16px;
+        margin: 0 0 8px 0;
+        color: #420825;
+      }
+
+      .gp-status {
+        display:flex;
+        align-items:center;
+        gap:8px;
+        font-size:13px;
+        margin-bottom:10px;
+        color:#333;
+      }
+
+      .gp-dot {
+        width:12px;
+        height:12px;
+        border-radius:50%;
+        background:#f87171; /* red = disconnected */
+        box-shadow: 0 1px 0 rgba(0,0,0,0.15) inset;
+      }
+
+      .gp-dot.connected {
+        background:#34d399; /* green = connected */
+      }
+
+      .gp-list { list-style:none; padding:0; margin:8px 0 0 0; font-size:13px; }
+      .gp-list li { display:flex; gap:10px; align-items:center; margin:8px 0; color:#222; }
+
+      /* button icon */
+      .gp-btn {
+        width:36px;
+        height:36px;
+        border-radius:8px;
+        background: linear-gradient(180deg,#fff,#f3f3f3);
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        font-weight:800;
+        color:#8b5cf6;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        transition: all .08s ease;
+        flex-shrink:0;
+        border: 2px solid rgba(0,0,0,0.04);
+      }
+
+      /* active state when pressed */
+      .gp-btn.active {
+        transform: scale(1.08);
+        box-shadow: 0 6px 18px rgba(120, 80, 200, 0.22);
+        background: linear-gradient(180deg,#fef3ff,#f9f5ff);
+        color:#7c3aed;
+      }
+
+      /* left/right arrow icons for axis */
+      .axis-icon { width:36px; height:36px; border-radius:8px; display:flex; align-items:center; justify-content:center; background:#fff; border: 2px solid rgba(0,0,0,0.04); }
+      .axis-icon.active { box-shadow: 0 6px 18px rgba(59,130,246,0.18); transform: translateY(-2px); }
+
+      /* small hint text */
+      .gp-hint { font-size:12px; color:#555; margin-top:8px; }
+
+      /* hide guide on narrow screens */
+      @media (max-width: 900px) {
+        #gamepad-guide { display:none; }
+      }

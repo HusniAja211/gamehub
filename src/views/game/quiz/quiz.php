@@ -25,33 +25,31 @@ if (!$categoryId) {
 }
 
 if ($showQuiz) {
-    // Ambil soal dari database
+    // Ambil semua soal dari kategori
     $stmt = $conn->prepare("SELECT * FROM soal WHERE id_kategori = ?");
     $stmt->bind_param("i", $categoryId);
     $stmt->execute();
     $hasilSoal = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
 
-    // Inisialisasi session jika belum ada
     $_SESSION['current_question'] = $_SESSION['current_question'] ?? 0;
     $_SESSION['answers'] = $_SESSION['answers'] ?? [];
     
-    // Pastikan waktu mulai hanya di-set saat kuis dimulai
     if (!isset($_SESSION['time_start'])) {
         $_SESSION['time_start'] = time();
     }
 
     $currentIndex = $_SESSION['current_question'];
     $totalSoal = count($hasilSoal);
-    $quizDuration = 5 * 60; // durasi dalam detik
+    $quizDuration = 5 * 60; // 5 menit
 
-    // Cek jika waktu kuis habis
+    // Cek waktu habis
     if (time() - $_SESSION['time_start'] > $quizDuration) {
         $_SESSION['current_question'] = $totalSoal;
     }
 
     if ($currentIndex >= $totalSoal) {
-        // Hitung skor jika kuis selesai
+        // Hitung skor akhir
         $correctAnswers = 0;
         foreach ($_SESSION['answers'] as $soal_id => $jawaban_user) {
             $stmt = $conn->prepare("SELECT jawaban FROM soal WHERE id = ?");
@@ -59,7 +57,7 @@ if ($showQuiz) {
             $stmt->execute();
             $result = $stmt->get_result()->fetch_assoc();
             $stmt->close();
-            if ($result['jawaban'] === $jawaban_user) {
+            if ($result && $result['jawaban'] === $jawaban_user) {
                 $correctAnswers++;
             }
         }
@@ -67,30 +65,30 @@ if ($showQuiz) {
         $showQuiz = false;
         $showResult = true;
     } else {
-        // Menampilkan soal dan opsi jawaban
+        // Soal aktif
         $soal = $hasilSoal[$currentIndex];
         $jawabanBenar = htmlspecialchars($soal['jawaban']);
-        
-        // Ambil jawaban lain secara acak
-        $stmt = $conn->prepare("SELECT jawaban_asal FROM jawaban_asal WHERE id_kategori = ? AND jawaban_asal != ? ORDER BY RAND() LIMIT 3");
-        $stmt->bind_param("is", $categoryId, $jawabanBenar);
+
+        // Ambil jawaban asal berdasarkan fid_soal
+        $stmt = $conn->prepare("SELECT jawaban_asal FROM jawaban_asal WHERE id_soal = ? ORDER BY RAND()");
+        $stmt->bind_param("i", $soal['id']);
         $stmt->execute();
         $hasilJawabanAsal = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         $stmt->close();
 
-        // Pilihan jawaban acak
         $opsiJawaban = [$jawabanBenar];
         foreach ($hasilJawabanAsal as $row) {
             $opsiJawaban[] = $row['jawaban_asal'];
         }
+
         while (count($opsiJawaban) < 4) {
             $opsiJawaban[] = "Pilihan lain";
         }
+
         shuffle($opsiJawaban);
     }
 }
 
-// Menangani jawaban yang dikirim
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['jawaban'])) {
     $_SESSION['answers'][$soal['id']] = $_POST['jawaban'];
     $_SESSION['current_question']++;
@@ -99,58 +97,68 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['jawaban'])) {
 }
 ?>
 
-    <style>
-        body {
-            background-color: #202047;
+<script>
+    let timeLeft = <?= max(0, $quizDuration - (time() - $_SESSION['time_start'])) ?>;
+    function updateTimer() {
+        if (timeLeft <= 0) {
+            document.getElementById("quiz-form").submit();
+        } else {
+            document.getElementById("timer").innerText = "⏱️ " + timeLeft + " detik tersisa";
+            timeLeft--;
+            setTimeout(updateTimer, 1000);
         }
-    </style>
+    }
+    window.onload = updateTimer;
+</script>
 
-    <script>
-        let timeLeft = <?= max(0, $quizDuration - (time() - $_SESSION['time_start'])) ?>;
-        function updateTimer() {
-            if (timeLeft <= 0) {
-                document.getElementById("quiz-form").submit();
-            } else {
-                document.getElementById("timer").innerText = "Sisa Waktu: " + timeLeft + " detik";
-                timeLeft--;
-                setTimeout(updateTimer, 1000);
-            }
-        }
-        window.onload = updateTimer;
-    </script>
-</head>
-
-<main class="flex items-center justify-center min-h-screen bg-gray-200">
+<main class="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
     <?php if ($errorMessage): ?>
-        <div class="max-w-4xl mx-auto p-5 bg-red-300 text-red-800 rounded-lg mb-6"><?= $errorMessage ?></div>
+        <div class="max-w-md mx-auto p-5 bg-red-100 border border-red-300 text-red-700 rounded-xl shadow-lg">
+            <?= $errorMessage ?>
+        </div>
     <?php endif; ?>
     
     <?php if ($showQuiz): ?>
-        <div class="max-w-lg mx-auto bg-pink-100 p-6 rounded-lg shadow-lg">
-            <h1 class="text-2xl font-semibold text-center text-gray-800 mb-4">Quiz Kategori: <?= htmlspecialchars($kategori['kategori']) ?></h1>
-            <div id="timer" class="text-xl font-bold text-red-600 mb-4"></div>
-            <form action="" method="POST" id="quiz-form">
-                <div class="question mb-4">
-                    <h3 class="text-lg font-medium text-gray-800"><?= ($currentIndex + 1) . ". " . htmlspecialchars($soal['soal']) ?></h3>
+        <div class="w-[90%] max-w-md mx-auto bg-white p-8 rounded-2xl shadow-xl border border-blue-200">
+            <h1 class="text-2xl font-bold text-center text-blue-700 mb-3">
+                Kategori: <?= htmlspecialchars($kategori['kategori']) ?>
+            </h1>
+            <div id="timer" class="text-lg font-semibold text-blue-600 text-center mb-5"></div>
+
+            <form action="" method="POST" id="quiz-form" class="space-y-4">
+                <div class="question">
+                    <h3 class="text-lg font-medium text-gray-800 mb-4">
+                        <?= ($currentIndex + 1) . ". " . htmlspecialchars($soal['soal']) ?>
+                    </h3>
                     <?php foreach ($opsiJawaban as $jawaban): ?>
-                        <div class="mb-2">
-                            <input type="radio" name="jawaban" value="<?= htmlspecialchars($jawaban) ?>" class="mr-2" required>
-                            <label class="text-gray-700"><?= htmlspecialchars($jawaban) ?></label>
-                        </div>
+                        <label class="flex items-center gap-4 p-2 border border-blue-100 rounded-lg hover:bg-blue-50 transition">
+                            <input type="radio" name="jawaban" value="<?= htmlspecialchars($jawaban) ?>" required>
+                            <span class="text-gray-800"><?= htmlspecialchars($jawaban) ?></span>
+                        </label>
                     <?php endforeach; ?>
                 </div>
-                <button type="submit" class="w-full py-2 px-4 bg-green-500 text-white rounded-lg hover:bg-green-600">Lanjut</button>
+
+                <button type="submit"
+                    class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 active:bg-blue-800 transition shadow-md">
+                    Lanjut ➜
+                </button>
             </form>
         </div>
     <?php endif; ?>
 
     <?php if ($showResult): ?>
-        <div class="max-w-lg mx-auto bg-pink-100 p-6 rounded-lg shadow-lg">
-            <h1 class="text-2xl font-semibold text-center text-gray-800 mb-4">Quiz Selesai</h1>
-            <p class="text-lg text-gray-800">Skor Anda: <?= $_SESSION['skor_akhir'] ?? 0 ?> / 100</p>
-            <a href="pilihKategori.php" class="text-blue-500 hover:underline mt-4 inline-block" onclick="<?php session_destroy(); ?>">Kembali</a>
+        <div class="w-[90%] max-w-md mx-auto bg-white p-8 rounded-2xl shadow-xl border border-blue-200 text-center">
+            <h1 class="text-2xl font-bold text-blue-700 mb-4">🎉 Quiz Selesai!</h1>
+            <p class="text-lg text-gray-700 mb-4">Skor Anda: 
+                <span class="font-semibold text-blue-600"><?= $_SESSION['skor_akhir'] ?? 0 ?></span> / 100
+            </p>
+            <a href="pilihKategori.php"
+                class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold shadow-md"
+                onclick="<?php session_destroy(); ?>">
+                🔁 Coba Lagi
+            </a>
         </div>
     <?php endif; ?>
 </main>
-<?php include __DIR__ . '/../../layout/footer.php';?>
 
+<?php include __DIR__ . '/../../layout/footer.php'; ?>

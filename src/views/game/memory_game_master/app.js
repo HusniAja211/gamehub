@@ -265,4 +265,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start the game
     initGame();
   });
+
+// Fungsi tambahan agar controller bisa panggil
+window.resetSelection = function () {
+  gameState.selectedCards = [];
+  gameState.selectedIds = [];
+  document.querySelectorAll('.card').forEach(c => (c.src = GAME_CONFIG.cardBackImage));
+};
+
+window.resetGame = function () {
+  initGame();
+  console.log("Game direset oleh controller 🎮");
+};
+
   

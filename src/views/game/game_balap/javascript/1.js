@@ -50,13 +50,3 @@ addEventListener("keyup", function (e) {
       break;
   }
 });
-
-// Update instruksi dan timer di UI
-document.querySelector(".instructions").innerHTML = `
-<div>
-  <span>W</span> accelerate
-  <span>A</span> left
-  <span>S</span> brake
-  <span>D</span> right
-</div>
-<div class="timer">Time Left: 30s</div>`;

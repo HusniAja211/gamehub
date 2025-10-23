@@ -340,6 +340,9 @@
         }
     </script>
 
+     <script src="/gamehub/src/function/controller.js"></script>
+    <script src="js/controllerNavigation.js"></script>
+
 </body>
 
 </html>

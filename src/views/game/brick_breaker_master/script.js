@@ -1,25 +1,28 @@
 var canvas = document.getElementById("canvas1");
 var ctx = canvas.getContext("2d");
 
-canvas.width = 800;
-canvas.height = 600;
+canvas.width = 500;
+canvas.height = 550;
 
 var x = canvas.width / 2;
 var y = canvas.height - 30;
 var dx = 2;
 var dy = -2;
+
 var ballRadius = 8;
 var paddleHeight = 12;
-var paddleWidth = 100;
+var paddleWidth = 80;
 var paddleX = (canvas.width - paddleWidth) / 2;
 var rightPressed = false;
 var leftPressed = false;
+
 var brickRowCount = 6;
 var brickColumnCount = 8;
-var brickWidth = 85;
+var brickWidth = 45;
 var brickHeight = 25;
-var brickPadding = 10;
+var brickPadding = 5;
 var brickOffSetTop = 50;
+
 var score = 0;
 var lives = 3;
 
@@ -61,6 +64,13 @@ function drawBricks() {
         }
     }
 }
+
+function showGameOver() {
+  gameOver = true;
+  const overlay = document.getElementById("gameOverScreen");
+  overlay.classList.remove("hidden");
+}
+
 
 function keyDownHandler(e) {
     if (e.key === "ArrowRight") {
@@ -141,8 +151,7 @@ function draw() {
         } else {
             lives--;
             if (!lives) {
-                alert("GAME OVER");
-                document.location.reload();
+                showGameOver();
             } else {
                 x = canvas.width / 2;
                 y = canvas.height - 30;

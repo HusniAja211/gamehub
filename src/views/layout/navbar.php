@@ -1,11 +1,22 @@
-   <!-- Navigation Bar -->
-   <nav class="bg-blue-500 p-4 flex justify-between items-center">
-        <div class="flex space-x-4">
-            <a class="bg-gray-300 text-black px-4 py-2 rounded" href="index.php">Halaman Utama</a>
-            <a class="bg-gray-300 text-black px-4 py-2 rounded" href="about.php">Tentang Kami</a>
-            <a class="bg-gray-300 text-black px-4 py-2 rounded" href="galery.php">Galeri</a>
+<!-- Navigation Bar -->
+<nav class="bg-blue-600 shadow-md px-6 py-3 flex justify-between items-center">
+    <!-- Logo / Brand -->
+    <div class="flex items-center space-x-2">
+        <div class="bg-white text-blue-600 font-bold px-3 py-1 rounded-lg shadow-sm">
+            TemanTusa
         </div>
-        <div class="bg-white w-32 h-8 rounded flex items-center justify-center">
-            <p class="text-center">TemanTusa</p>
-        </div>
-    </nav>
+    </div>
+
+    <!-- Menu -->
+    <div class="flex space-x-4">
+        <a href="index.php" class="text-white font-medium hover:bg-blue-700 px-4 py-2 rounded-lg transition">
+            Halaman Utama
+        </a>
+        <a href="about.php" class="text-white font-medium hover:bg-blue-700 px-4 py-2 rounded-lg transition">
+            Tentang Kami
+        </a>
+        <a href="galery.php" class="text-white font-medium hover:bg-blue-700 px-4 py-2 rounded-lg transition">
+            Galeri
+        </a>
+    </div>
+</nav>

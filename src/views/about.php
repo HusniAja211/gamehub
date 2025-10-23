@@ -20,7 +20,7 @@ $devs = getDev($conn);
                 Misi kami adalah menciptakan database game yang komprehensif dan menghubungkan pemain dengan pengembang 
                 untuk membangun komunitas gaming yang lebih kuat.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                 <div class="bg-blue-50 p-6 rounded-lg">
                     <h3 class="text-xl font-semibold mb-3 text-blue-700">Fitur</h3>
                     <ul class="list-disc pl-5 space-y-2">
@@ -46,9 +46,9 @@ $devs = getDev($conn);
         <h1 class="text-3xl font-bold mb-6">Tim Pengembang Kami</h1>
         <div class="w-16 h-1 bg-blue-500 mx-auto mb-8"></div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-items-center">
             <?php foreach ($devs as $dev): ?>
-                <div class="bg-white p-6 rounded-xl shadow-md relative overflow-hidden mx-auto mb-6 max-w-sm">
+                <div class="bg-white p-6 rounded-xl shadow-md relative overflow-hidden w-full max-w-sm">
                     <div class="relative group">
                         <img src="<?= $dev['gambar_developer']; ?>" alt="<?= $dev['nama_developer']; ?>" class="w-full h-48 object-cover rounded-t-xl">
 
@@ -90,8 +90,8 @@ $devs = getDev($conn);
     </section>
 
     <!-- Tombol Tambah Developer -->
-    <div class="flex justify-between items-center mt-auto pt-6">
-        <a href="insertDev.php" class="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600">
+    <div class="flex justify-end mt-10">
+        <a href="insertDev.php" class="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition">
             <i class="fas fa-plus text-xl"></i>
         </a>
     </div>

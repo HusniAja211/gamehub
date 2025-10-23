@@ -1,5 +1,8 @@
 /*! tailwindcss v4.0.0 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
+.grid > div {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, ring 0.2s ease;
+}
 @layer theme {
   :root {
     --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
