@@ -27,11 +27,11 @@ $displayImages = array_slice($images, $start, $perPage);
             <img src="<?= $galery['nama_galery'] ?>" class="max-w-full max-h-full object-contain">
            
             <!-- Overlay hitam dengan ikon delete -->
-            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+            <!-- <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
                 <a href="../function/deleteGalery.php?id_galery=<?= $galery['id_galery'] ?>" class="text-red-500 text-4xl flex items-center justify-center" onclick="return confirm('Apakah Anda yakin ingin menghapus game ini?');">
                     <i class="fas fa-trash-alt"></i>
                 </a>
-            </div>
+            </div> -->
         </div>
     <?php endforeach; ?>
 </div>
